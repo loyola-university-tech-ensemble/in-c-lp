@@ -1,0 +1,30 @@
+body {
+  width: 50%;
+  margin: 15px auto;
+  background-color: #232630;
+  color: #e7dcde;
+  font-family: Arial;
+}
+
+header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #6585c5;
+}
+
+.pattern-view-container {
+  background-color: #6585c5;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.pattern-view {
+  min-height: 150px;
+}
+
+.controls {
+  background-color: #6585c5;
+  padding: 10px;
+}
