@@ -1,0 +1,37 @@
+{
+  "name": "inc_webapp",
+  "version": "0.0.1",
+  "description": "LUTE's Web Audio-based performance tool for Terry Riley's \"In C\"",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify --debug js/main.js -o bundle.js",
+    "watch": "watchify js/main.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loyola-university-tech-ensemble/InC_WebApp.git"
+  },
+  "keywords": [
+    "Terry Riley",
+    "In C",
+    "web audio",
+    "laptop ensemble",
+    "laptop orchestra",
+    "technology ensemble"
+  ],
+  "author": "Loyola University Technology Ensemble",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loyola-university-tech-ensemble/InC_WebApp/issues"
+  },
+  "homepage": "https://github.com/loyola-university-tech-ensemble/InC_WebApp#readme",
+  "dependencies": {
+    "tone": "^0.11.11",
+    "vexflow": "^1.2.84"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "watchify": "^3.9.0"
+  }
+}
