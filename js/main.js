@@ -50,32 +50,26 @@
     }
   }).toMaster();
 
-  const loop = new Tone.Loop(function(time){
+  Tone.Transport.scheduleRepeat(function(time){
     ostinato.triggerAttackRelease("C3", "4n", time);
   }, "8n");
-  loop.start(0).stop("32m");
 
   const part = new Tone.Part(function(time, note){
-    synth.triggerAttackRelease(note.name, note.duration, time, note.velocity);
+    synth.triggerAttackRelease(note.name, note.duration, time+note.duration, note.velocity);
   }, phrases[0].notes);
 
   ostinatoButton.onclick = () => {
-    // clear transport timeline
-    Tone.Transport._timeline = new Tone.Timeline();
-
     playButton.dataset.scheduled = false;
-
-    // stop/start transport
     Tone.Transport.toggle();
   };
 
   playButton.onclick = () => {
     if (playButton.dataset.scheduled !== 'true') {
-      Tone.Transport.schedule(function(time){
-        synth.triggerAttackRelease("C5", "4n", time);
-        part.start(time).stop(phrases[0].duration);
+      Tone.Transport.scheduleOnce(function(time){
+        //re-enable button slightly ahead of phrase end
         playButton.dataset.scheduled = false;
-      }, "@1m");
+      }, `@1n + ${phrases[0].duration}/2`);
+      part.start('@1n').stop(`@1n + ${phrases[0].duration}`);
       playButton.dataset.scheduled = true;
     }
   }
