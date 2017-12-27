@@ -1,6 +1,5 @@
 [
   {
-    "startTime": 0,
     "duration": 1.4057291666666667,
     "notes": [
       {
@@ -48,6 +47,115 @@
     ]
   },
   {
-    "duration": 0
+    "duration": 0.75,
+    "notes": [
+      {
+        "name": "C4",
+        "midi": 60,
+        "time": 0,
+        "velocity": 1,
+        "duration": 0.0296875
+      },
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0.0328125,
+        "velocity": 1,
+        "duration": 0.21614583333333334
+      },
+      {
+        "name": "F4",
+        "midi": 65,
+        "time": 0.25104166666666666,
+        "velocity": 1,
+        "duration": 0.24791666666666667
+      },
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0.5,
+        "velocity": 1,
+        "duration": 0.25
+      }
+    ]
+  },
+  {
+    "duration": 0.9859375,
+    "notes": [
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0.25,
+        "velocity": 0.6850393700787402,
+        "duration": 0.25
+      },
+      {
+        "name": "F4",
+        "midi": 65,
+        "time": 0.5,
+        "velocity": 1,
+        "duration": 0.25
+      },
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0.75,
+        "velocity": 0.8031496062992126,
+        "duration": 0.23593750000000002
+      }
+    ]
+  },
+  {
+    "startTime": 0.25,
+    "duration": 0.9859375,
+    "notes": [
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0.25,
+        "velocity": 0.6850393700787402,
+        "duration": 0.25
+      },
+      {
+        "name": "F4",
+        "midi": 65,
+        "time": 0.5,
+        "velocity": 1,
+        "duration": 0.25
+      },
+      {
+        "name": "G4",
+        "midi": 67,
+        "time": 0.75,
+        "velocity": 0.8031496062992126,
+        "duration": 0.23593750000000002
+      }
+    ]
+  },
+  {
+    "duration": 0.7359375,
+    "notes": [
+      {
+        "name": "E4",
+        "midi": 64,
+        "time": 0,
+        "velocity": 0.9921259842519685,
+        "duration": 0.25
+      },
+      {
+        "name": "F4",
+        "midi": 65,
+        "time": 0.25,
+        "velocity": 0.7086614173228346,
+        "duration": 0.25
+      },
+      {
+        "name": "G4",
+        "midi": 67,
+        "time": 0.5,
+        "velocity": 0.8031496062992126,
+        "duration": 0.23593750000000002
+      }
+    ]
   }
 ]
