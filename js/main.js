@@ -50,26 +50,37 @@
     }
   }).toMaster();
 
-  Tone.Transport.scheduleRepeat(function(time){
-    ostinato.triggerAttackRelease("C3", "4n", time);
-  }, "8n");
+  Tone.Transport.scheduleRepeat((time) => {
+    ostinato.triggerAttackRelease("C3", "8n", time, 0.3);
+    ostinato.triggerAttackRelease("C3", "8n", `${time} + 8n`, 0.1);
+  }, "4n");
 
-  const part = new Tone.Part(function(time, note){
-    synth.triggerAttackRelease(note.name, note.duration, time+note.duration, note.velocity);
-  }, phrases[0].notes);
+  const parts = phrases.map(p =>
+    new Tone.Part((time, note) => {
+        synth.triggerAttackRelease(
+          note.pitch,
+          note.duration,
+          time,
+          note.velocity
+        );
+      }, p.notes
+    )
+  );
 
   ostinatoButton.onclick = () => {
     playButton.dataset.scheduled = false;
+    Tone.Transport.cancel(); // wipe transport
     Tone.Transport.toggle();
   };
 
   playButton.onclick = () => {
     if (playButton.dataset.scheduled !== 'true') {
+      const phraseNum = parseInt(patternView.dataset.pattern);
       Tone.Transport.scheduleOnce(function(time){
-        //re-enable button slightly ahead of phrase end
+        //re-enable button slightly ahead of end of phrase
         playButton.dataset.scheduled = false;
-      }, `@1n + ${phrases[0].duration}/2`);
-      part.start('@1n').stop(`@1n + ${phrases[0].duration}`);
+      }, `@4n + (${phrases[phraseNum].duration})/4`);
+      parts[phraseNum].start('@4n').stop(`@4n + ${phrases[phraseNum].duration}`);
       playButton.dataset.scheduled = true;
     }
   }

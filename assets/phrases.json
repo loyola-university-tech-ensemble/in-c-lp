@@ -1,48 +1,62 @@
 [
   {
-    "duration": 1.4057291666666667,
+    "duration": "1m",
     "notes": [
       {
-        "name": "C4",
-        "midi": 60,
-        "time": 0,
-        "velocity": 1,
-        "duration": 0.033854166666666664
-      },
-      {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
-        "time": 0.0359375,
+        "time": "0",
         "velocity": 1,
-        "duration": 0.36822916666666666
+        "duration": "4n"
       },
       {
-        "name": "C4",
+        "pitch": "C4",
         "midi": 60,
-        "time": 0.40989583333333335,
+        "time": "4n - 16t",
         "velocity": 0.8503937007874016,
-        "duration": 0.09010416666666665
+        "duration": "16t"
       },
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
-        "time": 0.5041666666666667,
+        "time": "4n",
         "velocity": 1,
-        "duration": 0.37083333333333335
+        "duration": "4n"
       },
       {
-        "name": "C4",
+        "pitch": "C4",
         "midi": 60,
-        "time": 0.9057291666666667,
+        "time": "2n - 16t",
         "velocity": 0.8503937007874016,
-        "duration": 0.09218749999999998
+        "duration": "16t"
       },
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
-        "time": 1,
+        "time": "2n",
         "velocity": 1,
-        "duration": 0.4057291666666667
+        "duration": "4n"
+      },
+      {
+        "pitch": "C4",
+        "midi": 60,
+        "time": "(4n * 3) - 16t",
+        "velocity": 0.8503937007874016,
+        "duration": "16t"
+      },
+      {
+        "pitch": "E4",
+        "midi": 64,
+        "time": "4n * 3",
+        "velocity": 1,
+        "duration": "4n"
+      },
+      {
+        "pitch": "C4",
+        "midi": 60,
+        "time": "1m - 16t",
+        "velocity": 0.8503937007874016,
+        "duration": "16t"
       }
     ]
   },
@@ -50,28 +64,28 @@
     "duration": 0.75,
     "notes": [
       {
-        "name": "C4",
+        "pitch": "C4",
         "midi": 60,
         "time": 0,
         "velocity": 1,
         "duration": 0.0296875
       },
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0.0328125,
         "velocity": 1,
         "duration": 0.21614583333333334
       },
       {
-        "name": "F4",
+        "pitch": "F4",
         "midi": 65,
         "time": 0.25104166666666666,
         "velocity": 1,
         "duration": 0.24791666666666667
       },
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0.5,
         "velocity": 1,
@@ -83,21 +97,21 @@
     "duration": 0.9859375,
     "notes": [
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0.25,
         "velocity": 0.6850393700787402,
         "duration": 0.25
       },
       {
-        "name": "F4",
+        "pitch": "F4",
         "midi": 65,
         "time": 0.5,
         "velocity": 1,
         "duration": 0.25
       },
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0.75,
         "velocity": 0.8031496062992126,
@@ -110,21 +124,21 @@
     "duration": 0.9859375,
     "notes": [
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0.25,
         "velocity": 0.6850393700787402,
         "duration": 0.25
       },
       {
-        "name": "F4",
+        "pitch": "F4",
         "midi": 65,
         "time": 0.5,
         "velocity": 1,
         "duration": 0.25
       },
       {
-        "name": "G4",
+        "pitch": "G4",
         "midi": 67,
         "time": 0.75,
         "velocity": 0.8031496062992126,
@@ -136,21 +150,21 @@
     "duration": 0.7359375,
     "notes": [
       {
-        "name": "E4",
+        "pitch": "E4",
         "midi": 64,
         "time": 0,
         "velocity": 0.9921259842519685,
         "duration": 0.25
       },
       {
-        "name": "F4",
+        "pitch": "F4",
         "midi": 65,
         "time": 0.25,
         "velocity": 0.7086614173228346,
         "duration": 0.25
       },
       {
-        "name": "G4",
+        "pitch": "G4",
         "midi": 67,
         "time": 0.5,
         "velocity": 0.8031496062992126,
