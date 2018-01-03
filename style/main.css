@@ -3,28 +3,24 @@ body {
   margin: 15px auto;
   background-color: #232630;
   color: #f8efff;
-  font-family: Arial;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 header {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: #364156;
+  font-size: 26px;
+  font-weight: 300;
 }
 
-.pattern-view-container {
+.panel {
   background-color: #364156;
   padding: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.panel:not(:last-child) {
   margin-bottom: 15px;
 }
 
 .pattern-view {
   min-height: 150px;
-}
-
-.controls {
-  background-color: #364156;
-  padding: 10px;
 }
