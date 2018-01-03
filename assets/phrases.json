@@ -61,114 +61,113 @@
     ]
   },
   {
-    "duration": 0.75,
+    "duration": "4n * 3",
     "notes": [
       {
         "pitch": "C4",
         "midi": 60,
         "time": 0,
         "velocity": 1,
-        "duration": 0.0296875
+        "duration": "32n"
       },
       {
         "pitch": "E4",
         "midi": 64,
-        "time": 0.0328125,
+        "time": "32n",
         "velocity": 1,
-        "duration": 0.21614583333333334
+        "duration": "8n"
       },
       {
         "pitch": "F4",
         "midi": 65,
-        "time": 0.25104166666666666,
+        "time": "8n",
         "velocity": 1,
-        "duration": 0.24791666666666667
+        "duration": "8n"
       },
       {
         "pitch": "E4",
         "midi": 64,
-        "time": 0.5,
+        "time": "4n",
         "velocity": 1,
-        "duration": 0.25
+        "duration": "4n"
       }
     ]
   },
   {
-    "duration": 0.9859375,
+    "duration": "2n",
     "notes": [
       {
         "pitch": "E4",
         "midi": 64,
-        "time": 0.25,
+        "time": "8n",
         "velocity": 0.6850393700787402,
-        "duration": 0.25
+        "duration": "8n"
       },
       {
         "pitch": "F4",
         "midi": 65,
-        "time": 0.5,
+        "time": "4n",
         "velocity": 1,
-        "duration": 0.25
+        "duration": "8n"
       },
       {
         "pitch": "E4",
         "midi": 64,
-        "time": 0.75,
+        "time": "4n + 8n",
         "velocity": 0.8031496062992126,
-        "duration": 0.23593750000000002
+        "duration": "8n"
       }
     ]
   },
   {
-    "startTime": 0.25,
-    "duration": 0.9859375,
+    "duration": "2n",
     "notes": [
       {
         "pitch": "E4",
         "midi": 64,
-        "time": 0.25,
+        "time": "8n",
         "velocity": 0.6850393700787402,
-        "duration": 0.25
+        "duration": "8n"
       },
       {
         "pitch": "F4",
         "midi": 65,
-        "time": 0.5,
+        "time": "4n",
         "velocity": 1,
-        "duration": 0.25
+        "duration": "8n"
       },
       {
         "pitch": "G4",
         "midi": 67,
-        "time": 0.75,
+        "time": "4n + 8n",
         "velocity": 0.8031496062992126,
-        "duration": 0.23593750000000002
+        "duration": "8n"
       }
     ]
   },
   {
-    "duration": 0.7359375,
+    "duration": "2n",
     "notes": [
       {
         "pitch": "E4",
         "midi": 64,
         "time": 0,
-        "velocity": 0.9921259842519685,
-        "duration": 0.25
+        "velocity": 1.0,
+        "duration": "8n"
       },
       {
         "pitch": "F4",
         "midi": 65,
-        "time": 0.25,
+        "time": "8n",
         "velocity": 0.7086614173228346,
-        "duration": 0.25
+        "duration": "8n"
       },
       {
         "pitch": "G4",
         "midi": 67,
-        "time": 0.5,
+        "time": "4n",
         "velocity": 0.8031496062992126,
-        "duration": 0.23593750000000002
+        "duration": "8n"
       }
     ]
   }
