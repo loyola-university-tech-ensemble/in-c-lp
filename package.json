@@ -27,8 +27,7 @@
   },
   "homepage": "https://github.com/loyola-university-tech-ensemble/InC_WebApp#readme",
   "dependencies": {
-    "tone": "^0.11.11",
-    "vexflow": "^1.2.84"
+    "tone": "^0.11.11"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
