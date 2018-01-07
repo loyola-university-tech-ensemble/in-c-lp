@@ -17,3 +17,16 @@ $ npm run-script watch
 ```
 
 [npm]: https://www.npmjs.com/
+
+### Phrase SVG Generation
+
+Building new SVG images for each phrase requires [Lilypond][ly]. The Lilypond
+source files can be found in `assets/ly` and generating SVGs from them is
+automated by a build script in the same directory:
+
+```
+$ cd assets/ly
+$ ./build.sh
+```
+
+[ly]: https://lilypond.org/
