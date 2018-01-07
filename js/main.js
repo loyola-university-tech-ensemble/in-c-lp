@@ -82,7 +82,7 @@
       Tone.Transport.scheduleOnce(function(time){
         //re-enable button slightly ahead of end of phrase
         playButton.dataset.scheduled = false;
-      }, `@4n + (${phrases[phraseNum].duration})/4`);
+      }, `@4n + (${phrases[phraseNum].duration})/2`);
       parts[phraseNum].start('@4n').stop(`@4n + ${phrases[phraseNum].duration}`);
       playButton.dataset.scheduled = true;
     }
