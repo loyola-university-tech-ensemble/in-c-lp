@@ -6,6 +6,7 @@
   const totalPatterns = 53;
 
   const patternView = document.querySelector('.pattern-view');
+  const svgView = document.querySelector('.svg-view');
   const forwardButton = document.querySelector('.forward');
   const backwardButton = document.querySelector('.backward');
   const ostinatoButton = document.querySelector('.ostinato');
@@ -15,6 +16,7 @@
     const pattern = (parseInt(patternView.dataset.pattern, 10) + 1) % totalPatterns;
     patternView.dataset.pattern = pattern;
     patternView.src = `assets/images/Sco${pattern+1}.png`;
+    svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
 
   backwardButton.onclick = () => {
@@ -22,6 +24,7 @@
     const pattern = (n-1 >= 0) ? n-1 : totalPatterns-1;
     patternView.dataset.pattern = pattern;
     patternView.src = `assets/images/Sco${pattern+1}.png`;
+    svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
 
   const ostinato = new Tone.Synth({
@@ -79,7 +82,7 @@
       Tone.Transport.scheduleOnce(function(time){
         //re-enable button slightly ahead of end of phrase
         playButton.dataset.scheduled = false;
-      }, `@4n + (${phrases[phraseNum].duration})/4`);
+      }, `@4n + (${phrases[phraseNum].duration})/2`);
       parts[phraseNum].start('@4n').stop(`@4n + ${phrases[phraseNum].duration}`);
       playButton.dataset.scheduled = true;
     }

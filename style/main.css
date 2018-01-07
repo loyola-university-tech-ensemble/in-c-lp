@@ -1,14 +1,38 @@
 body {
-  width: 50%;
-  margin: 15px auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
   background-color: #232630;
   color: #f8efff;
   font-family: Helvetica, Arial, sans-serif;
 }
 
+@media (min-width: 800px) {
+  body {
+    width: 50%;
+    margin: 15px auto;
+  }
+}
+
 header {
   font-size: 26px;
   font-weight: 300;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  background: #5398af;
+  font-size: 14px;
+}
+
+button:focus {
+  outline: none;
+}
+
+#vex-view {
+  background: white;
 }
 
 .panel {
@@ -23,4 +47,19 @@ header {
 
 .pattern-view {
   min-height: 150px;
+}
+
+.svg-view {
+  background: white;
+  padding: 15px;
+  height: 100px;
+}
+
+.panel.controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+button[data-scheduled="true"] {
+  background: #5c6d7b;
 }
