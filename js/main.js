@@ -74,6 +74,7 @@
     playButton.dataset.scheduled = false;
     Tone.Transport.cancel(); // wipe transport
     Tone.Transport.toggle();
+    ostinatoButton.dataset.active = Tone.Transport.state;
   };
 
   playButton.onclick = () => {
