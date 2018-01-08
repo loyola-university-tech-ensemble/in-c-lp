@@ -3,8 +3,8 @@
 
 phrase = \relative c' {
 
-  \mark "3."
-  r8 e f[ e]
+  \mark "28." 
+  e16[ fis e fis] e8.[ e16]
 
 }
 

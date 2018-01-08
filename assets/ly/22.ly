@@ -3,8 +3,9 @@
 
 phrase = \relative c' {
 
-  \mark "3."
-  r8 e f[ e]
+  \mark "22." 
+  \cadenzaOn
+  e4. e e e e fis g a b8
 
 }
 
@@ -17,6 +18,7 @@ phrase = \relative c' {
   }
   \layout {
     \context { \Staff
+      defaultBarType = ""
       \override Clef #'stencil = ##f
       \remove Time_signature_engraver
       \override BarLine.hair-thickness = #-1
