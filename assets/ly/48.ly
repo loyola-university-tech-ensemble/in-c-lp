@@ -1,11 +1,11 @@
 \version "2.19.80"
 
 
-phrase = \relative c' {
+phrase = \relative c'' {
 
-  \mark "3."
-  r8 e f[ e]
-
+  \mark "48." 
+  \cadenzaOn
+  g1. g1 f~ f4
 }
 
 \score {

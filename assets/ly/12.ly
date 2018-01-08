@@ -3,8 +3,9 @@
 
 phrase = \relative c' {
 
-  \mark "3."
-  r8 e f[ e]
+  \mark "12." 
+  \cadenzaOn
+  f8 g b1 c4
 
 }
 
