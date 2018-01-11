@@ -1,5 +1,6 @@
 "use strict";
 (function() {
+
   const Tone = require('tone');
   const phrases = require('../assets/phrases.json');
 
@@ -12,20 +13,34 @@
   const ostinatoButton = document.querySelector('.ostinato');
   const playButton = document.querySelector('.play');
 
-  forwardButton.onclick = () => {
+  const moveForwards = () => {
     const pattern = (parseInt(patternView.dataset.pattern, 10) + 1) % totalPatterns;
     patternView.dataset.pattern = pattern;
     patternView.src = `assets/images/Sco${pattern+1}.png`;
     svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
 
-  backwardButton.onclick = () => {
+  const moveBackwards = () => {
     const n = parseInt(patternView.dataset.pattern, 10);
     const pattern = (n-1 >= 0) ? n-1 : totalPatterns-1;
     patternView.dataset.pattern = pattern;
     patternView.src = `assets/images/Sco${pattern+1}.png`;
     svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
+
+  forwardButton.onclick = moveForwards;
+  backwardButton.onclick = moveBackwards;
+
+  document.addEventListener('keydown', (event) => {
+    switch(event.keyCode) {
+      case 37: // left arrow
+        moveBackwards();
+        break;
+      case 39: // right arrow
+        moveForwards();
+        break;
+    }
+  });
 
   const ostinato = new Tone.Synth({
     "oscillator" : {
