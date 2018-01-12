@@ -5,7 +5,7 @@ phrase = \relative c' {
 
   \mark "32." 
   \cadenzaOn
-  f16[ g f] g[ b e,~] e2. f4.
+  f16[ g f] g[ b f~] f2. g4.
 
 }
 

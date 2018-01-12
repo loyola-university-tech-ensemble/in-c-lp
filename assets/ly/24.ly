@@ -5,7 +5,7 @@ phrase = \relative c' {
 
   \mark "24." 
   \cadenzaOn
-  e8 fis g4. g g g g a4. b8
+  e8[ fis] g4. g g g g a4. b8
 
 }
 

@@ -6,7 +6,7 @@ phrase = \relative c' {
   \mark "7." 
   \cadenzaOn
   r4 r r r8
-  c16 c c8
+  c16[ c] c8
   r8 r4 r r r
 
 }
