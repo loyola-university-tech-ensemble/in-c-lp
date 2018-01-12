@@ -63,7 +63,7 @@
     "envelope" : {
       "attack" : 0.02,
       "decay" : 0.5,
-      "sustain" : 0.0,
+      "sustain" : 0.25,
       "release" : 0.4,
     }
   }).toMaster();
