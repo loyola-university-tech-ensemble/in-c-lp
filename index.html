@@ -7,19 +7,32 @@
   <meta name="viewport" content="width=device-width" />
 </head>
 <body>
+
   <header class="panel">In C - Web Audio Edition</header>
+
   <div class="panel pattern-view-container">
     <image class="pattern-view" src="assets/images/Sco1.png" data-pattern=0></image>
   </div>
+
   <div class="panel svg-panel">
-    <image class="svg-view" src="assets/svgs/1.svg" preserveAspectRatio="xMidYMid meet"></image>
+    <div class="svg-container">
+      <image class="svg-view" src="assets/svgs/1.svg" preserveAspectRatio="xMidYMid meet"></image>
+    </div>
   </div>
-  <div class="panel controls">
+
+  <div class="panel octave-controls">
+    <div class="input-wrapper">
+      <input class="octave-slider" type="range" value="0" min="-2" max="2" step="1">
+    </div>
+  </div>
+
+  <div class="panel playback-controls">
     <button class="backward">Previous</button>
     <button class="play">Play</button>
     <button class="forward">Next</button>
     <button class="ostinato" data-active="stopped">Ostinato</button>
   </div>
+
 </body>
 <script src="bundle.js"></script>
 </html>
