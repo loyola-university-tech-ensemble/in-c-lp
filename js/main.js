@@ -2,16 +2,19 @@
 (function() {
 
   const Tone = require('tone');
-  const phrases = require('../assets/phrases.json');
 
-  const totalPatterns = 53;
+  const phrases = require('../assets/phrases.json');
+  const totalPatterns = phrases.length;
 
   const patternView = document.querySelector('.pattern-view');
   const svgView = document.querySelector('.svg-view');
+
   const forwardButton = document.querySelector('.forward');
   const backwardButton = document.querySelector('.backward');
   const ostinatoButton = document.querySelector('.ostinato');
   const playButton = document.querySelector('.play');
+
+  const octaveSlider = document.querySelector('.octave-slider');
 
   const moveForwards = () => {
     const pattern = (parseInt(patternView.dataset.pattern, 10) + 1) % totalPatterns;
@@ -75,14 +78,14 @@
 
   const parts = phrases.map(p =>
     new Tone.Part((time, note) => {
-        synth.triggerAttackRelease(
-          note.pitch,
-          note.duration,
-          time,
-          note.velocity
-        );
-      }, p.notes
-    )
+      const [_, pClass, octave] = note.pitch.match(/(\w\#?)(\d)/);
+      synth.triggerAttackRelease(
+        `${pClass}${parseInt(octave) + parseInt(octaveSlider.value)}`,
+        note.duration,
+        time,
+        note.velocity
+      );
+    }, p.notes)
   );
 
   ostinatoButton.onclick = () => {
