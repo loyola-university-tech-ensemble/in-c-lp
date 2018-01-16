@@ -3,34 +3,52 @@
 <head>
   <meta charset="utf-8">
   <link href="style/main.css" rel="stylesheet" type="text/css">
-  <title>In C - Web Audio Edition</title>
+  <title>LUTE: inC</title>
   <meta name="viewport" content="width=device-width" />
 </head>
 <body>
 
-  <header class="panel">In C - Web Audio Edition</header>
-
-  <div class="panel pattern-view-container">
-    <image class="pattern-view" src="assets/images/Sco1.png" data-pattern=0></image>
-  </div>
+  <header class="panel">
+    <span>LUTE: inC</span>
+    <span class="dropdown-control">
+      <span class="dropdown-button icon-container" data-open="0">
+        <span data-feather="menu"></span>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="tempo-controls">
+          <span class="tempo-label" data-tempo="120">bpm</span>
+          <input class="tempo-slider" type="range" value="120" min="60" max="150">
+        </li>
+        <li>Clock</li>
+      </ul>
+    </span>
+  </header>
 
   <div class="panel svg-panel">
     <div class="svg-container">
-      <image class="svg-view" src="assets/svgs/1.svg" preserveAspectRatio="xMidYMid meet"></image>
+      <image class="svg-view" src="assets/svgs/1.svg" preserveAspectRatio="xMidYMid meet" data-pattern=0></image>
     </div>
   </div>
 
   <div class="panel octave-controls">
-    <div class="input-wrapper">
+    <div class="input-wrapper octave" data-octave="0">
       <input class="octave-slider" type="range" value="0" min="-2" max="2" step="1">
     </div>
   </div>
 
   <div class="panel playback-controls">
-    <button class="backward">Previous</button>
-    <button class="play">Play</button>
-    <button class="forward">Next</button>
-    <button class="ostinato" data-active="stopped">Ostinato</button>
+    <button class="backward">
+      <span data-feather="arrow-left"></span>
+    </button>
+    <button class="play" data-scheduled="true">
+      <span data-feather="play"></span>
+    </button>
+    <button class="forward">
+      <span data-feather="arrow-right"></span>
+    </button>
+    <button class="ostinato" data-active="stopped">
+      <span data-feather="repeat"></span>
+    </button>
   </div>
 
 </body>

@@ -1,9 +1,10 @@
 body {
   width: 50%;
+  max-width: 800px;
   margin: 15px auto;
   background-color: #232630;
   color: #f8efff;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Avenir Next', Helvetica, Arial, sans-serif;
 }
 
 @media only screen and (max-device-width: 800px) {
@@ -18,16 +19,18 @@ body {
 
 header {
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 button {
   padding: 20px 30px;
   margin: 5px;
   border: none;
+  border-bottom: 3px solid #3b77e8;
   border-radius: 2px;
   color: white;
-  background: #5398af;
+  background: cornflowerblue;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -40,7 +43,8 @@ button:focus {
 }
 
 button:active {
-  box-shadow: inset 0 0 1px 3px rgba(50,50,50,0.5);
+  box-shadow: inset 0 0 1px 3px rgba(0,0,0,0.25);
+  border-bottom: none !important;
 }
 
 .panel {
@@ -58,10 +62,13 @@ button:active {
 }
 
 .svg-container {
+  display: flex;
+  align-content: flex-start;
   overflow-x: auto;
 }
 
 .svg-view {
+  flex-grow: 1;
   background: white;
   padding: 15px;
   height: 100px;
@@ -77,31 +84,89 @@ button:active {
   justify-content: space-around;
 }
 
+.panel.octave-controls {
+  display: flex;
+  align-items: center;
+}
+
 .panel.octave-controls .input-wrapper {
   display: flex;
-  justify-content: center;
   width: 100%;
+  margin-left: 15px;
 }
 
 .panel.octave-controls .input-wrapper > input {
-  width: 90%;
+  width: 100%;
 }
 
 button[data-scheduled="true"] {
   background: #5c6d7b;
+  border-bottom: 3px solid #424e57;
 }
 
 .ostinato[data-active="started"] {
   background: #599059;
+  border-bottom: 3px solid #3c623c;
 }
 
 .ostinato[data-active="stopped"] {
   background: #944141;
+  border-bottom: 3px solid #713232;
 }
 
-/******************************************/
-/* Cross-platform range styling overrides */
-/******************************************/
+.dropdown-control {
+  position: relative;
+  float: right;
+}
+
+.dropdown-button[data-open="1"] {
+  box-shadow: 0px 0px 1px 3px rgba(100,100,100,0.5);
+}
+
+.dropdown-button[data-open="0"] + .dropdown-menu {
+  display: none;
+}
+
+.dropdown-button[data-open="1"] + .dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  min-width: 400px;
+  margin: 0;
+  padding: 10px;
+  background: #364156;
+  border: 1px solid #232630;
+  box-shadow: 0 0 0 2px rgba(100,100,100,0.15);
+  font-size: 18px;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu li:not(:last-child) {
+  border-bottom: 1px solid #232630;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.tempo-controls {
+  display: flex;
+}
+
+.tempo-label {
+  min-width: 75px;
+  margin-right: 10px;
+}
+
+.tempo-label:before {
+  content: attr(data-tempo);
+}
+
+/***************************************************/
+/* Cross-platform range styling overrides          */
+/* Adapted from http://danielstern.ca/range.css/#/ */
+/***************************************************/
 
 input[type=range] {
   -webkit-appearance: none;
@@ -114,39 +179,80 @@ input[type=range]:focus {
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7px;
+  height: 12px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #5398af;
+  box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.25);
+  background: cornflowerblue;
   border-radius: 25px;
-  border: 0px solid #010101;
+  border: none;
+}
+.input-wrapper.octave[data-octave="-2"] > input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+    cornflowerblue,
+    cornflowerblue 25%,
+    #424e57 25%,
+    #424e57 25.5%,
+    cornflowerblue 25%,
+    cornflowerblue 50%,
+    #232630 50%
+  );
+}
+.input-wrapper.octave[data-octave="-1"] > input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+    #232630,
+    #232630 24%,
+    cornflowerblue 25%,
+    cornflowerblue 50%,
+    #232630 50%
+  );
+}
+.input-wrapper.octave[data-octave="0"] > input[type=range]::-webkit-slider-runnable-track {
+  background-color: #232630;
+}
+.input-wrapper.octave[data-octave="1"] > input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+    #232630 50%,
+    cornflowerblue 50%,
+    cornflowerblue 75%,
+    #232630 76%
+  );
+}
+.input-wrapper.octave[data-octave="2"] > input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+    #232630 50%,
+    cornflowerblue 50%,
+    cornflowerblue 75%,
+    #424e57 75%,
+    cornflowerblue 75.5%
+  );
 }
 input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #333333;
-  height: 20px;
-  width: 30px;
-  border-radius: 50px;
-  background: #818286;
-  cursor: pointer;
+  margin-top: -6px;
+  height: 25px;
+  width: 35px;
   -webkit-appearance: none;
-  margin-top: -6.5px;
+  border-radius: 50px;
+  border: none;
+  border-bottom: 2px solid #424e57;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
+  background: #5c6d7b;
+  cursor: pointer;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #569ab1;
+  background: cornflowerblue;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
   height: 7px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: none;
   background: #5398af;
   border-radius: 25px;
-  border: 0px solid #010101;
+  border: none;
 }
 input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #333333;
+  box-shadow: none;
+  border: none;
   height: 20px;
   width: 30px;
   border-radius: 50px;
@@ -163,19 +269,19 @@ input[type=range]::-ms-track {
 }
 input[type=range]::-ms-fill-lower {
   background: #5096ad;
-  border: 0px solid #010101;
+  border: none;
   border-radius: 50px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: none;
 }
 input[type=range]::-ms-fill-upper {
   background: #5398af;
-  border: 0px solid #010101;
+  border: none;
   border-radius: 50px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: none;
 }
 input[type=range]::-ms-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #333333;
+  box-shadow: none;
+  border: none;
   height: 20px;
   width: 30px;
   border-radius: 50px;

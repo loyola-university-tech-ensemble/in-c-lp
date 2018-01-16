@@ -1,12 +1,20 @@
 "use strict";
 (function() {
 
+  const feather = require('feather-icons');
   const Tone = require('tone');
-
   const phrases = require('../assets/phrases.json');
-  const totalPatterns = phrases.length;
+  const TOTAL_PATTERNS = phrases.length;
 
-  const patternView = document.querySelector('.pattern-view');
+  feather.replace();
+
+  const dropdowns = document.getElementsByClassName('dropdown-button');
+  for (let i = 0; i < dropdowns.length; i+=1) {
+    dropdowns[i].onclick = () => {
+      dropdowns[i].dataset.open = parseInt(dropdowns[i].dataset.open) ? '0' : '1';
+    }
+  }
+
   const svgView = document.querySelector('.svg-view');
 
   const forwardButton = document.querySelector('.forward');
@@ -14,20 +22,22 @@
   const ostinatoButton = document.querySelector('.ostinato');
   const playButton = document.querySelector('.play');
 
+  const octaveContainer = document.querySelector('.input-wrapper.octave');
   const octaveSlider = document.querySelector('.octave-slider');
 
+  const tempoLabel = document.querySelector('.tempo-label');
+  const tempoSlider = document.querySelector('.tempo-slider');
+
   const moveForwards = () => {
-    const pattern = (parseInt(patternView.dataset.pattern, 10) + 1) % totalPatterns;
-    patternView.dataset.pattern = pattern;
-    patternView.src = `assets/images/Sco${pattern+1}.png`;
+    const pattern = (parseInt(svgView.dataset.pattern, 10) + 1) % TOTAL_PATTERNS;
+    svgView.dataset.pattern = pattern;
     svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
 
   const moveBackwards = () => {
-    const n = parseInt(patternView.dataset.pattern, 10);
-    const pattern = (n-1 >= 0) ? n-1 : totalPatterns-1;
-    patternView.dataset.pattern = pattern;
-    patternView.src = `assets/images/Sco${pattern+1}.png`;
+    const n = parseInt(svgView.dataset.pattern, 10);
+    const pattern = (n-1 >= 0) ? n-1 : TOTAL_PATTERNS-1;
+    svgView.dataset.pattern = pattern;
     svgView.src = `assets/svgs/${pattern+1}.svg`;
   };
 
@@ -41,6 +51,17 @@
         break;
       case 39: // right arrow
         moveForwards();
+        break;
+      case 188: // less-than
+        octaveSlider.value = parseInt(octaveSlider.value, 10) - 1;
+        octaveContainer.dataset.octave = octaveSlider.value;
+        break;
+      case 190: // greater-than
+        octaveSlider.value = parseInt(octaveSlider.value, 10) + 1;
+        octaveContainer.dataset.octave = octaveSlider.value;
+        break;
+      case 90: // forward slash
+        // TODO: 8th note shift
         break;
     }
   });
@@ -97,7 +118,7 @@
 
   playButton.onclick = () => {
     if (playButton.dataset.scheduled !== 'true') {
-      const phraseNum = parseInt(patternView.dataset.pattern);
+      const phraseNum = parseInt(svgView.dataset.pattern);
       Tone.Transport.scheduleOnce(function(time){
         //re-enable button slightly ahead of end of phrase
         playButton.dataset.scheduled = false;
@@ -105,6 +126,16 @@
       parts[phraseNum].start('@4n').stop(`@4n + ${phrases[phraseNum].duration}`);
       playButton.dataset.scheduled = true;
     }
+  }
+
+  octaveSlider.onchange = () => {
+    octaveContainer.dataset.octave = octaveSlider.value;
+  }
+
+  tempoSlider.onchange = (event) => {
+    const bpm = parseInt(tempoSlider.value, 10);
+    tempoLabel.dataset.tempo = bpm;
+    Tone.Transport.bpm.rampTo(bpm, 0.1);
   }
 
 })();
