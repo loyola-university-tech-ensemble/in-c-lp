@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/loyola-university-tech-ensemble/InC_WebApp#readme",
   "dependencies": {
+    "feather-icons": "^4.5.0",
     "tone": "^0.11.11"
   },
   "devDependencies": {
