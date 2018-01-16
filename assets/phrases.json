@@ -387,7 +387,7 @@
       {
         "pitch": "G4",
         "midi": 67,
-        "time": "2n",
+        "time": "2n + 8n + 16n",
         "velocity": 0.8188976377952756,
         "duration": "2n + 4n + 16n"
       }
@@ -472,7 +472,7 @@
     ]
   },
   {
-    "duration": "8n * 3",
+    "duration": "4n + 8n",
     "notes": [
       {
         "pitch": "B4",
@@ -498,7 +498,7 @@
       {
         "pitch": "C5",
         "midi": 72,
-        "time": "16n * 3",
+        "time": "8n + 16n",
         "velocity": 0.937007874015748,
         "duration": "16n"
       },
