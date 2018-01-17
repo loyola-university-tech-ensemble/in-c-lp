@@ -4,8 +4,12 @@
   "description": "LUTE's Web Audio-based performance tool for Terry Riley's \"In C\"",
   "main": "index.js",
   "scripts": {
-    "build": "browserify --debug js/main.js -o bundle.js",
-    "watch": "watchify -v --debug js/main.js -o bundle.js",
+    "build-js": "browserify -v js/main.js -o bundle.js",
+    "build-sass": "node-sass styles/main.scss style.css",
+    "build": "npm run build-js && npm run build-sass",
+    "watch-js": "watchify -v --debug js/main.js -o bundle.js",
+    "watch-sass": "node-sass -w --source-map-embed styles/main.scss style.css",
+    "watch": "npm run watch-js & npm run watch-sass",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +36,7 @@
   },
   "devDependencies": {
     "browserify": "^14.5.0",
+    "node-sass": "^4.7.2",
     "watchify": "^3.9.0"
   }
 }
