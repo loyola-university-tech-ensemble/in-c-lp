@@ -1,0 +1,143 @@
+//=================
+// Global Variables
+//=================
+
+$bg-color: #232630;
+$fg-color: #f8efff;
+
+$blue: cornflowerblue;
+$green: #599059;
+$red: #944141;
+$grey: #5c6d7b;
+$dark-grey: #424e57;
+
+%no-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@import './buttons.scss';
+@import './sliders.scss';
+
+//=============
+// Base Styling
+//=============
+
+body {
+  width: 50%;
+  max-width: 800px;
+  margin: 15px auto;
+  background-color: $bg-color;
+  color: $fg-color;
+  font-family: 'Avenir Next', Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (max-device-width: 800px) {
+  body {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+header {
+  font-size: 26px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.panel {
+  background-color: #364156;
+  padding: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.panel:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.pattern-view {
+  min-height: 150px;
+}
+
+.svg-container {
+  display: flex;
+  align-content: flex-start;
+  overflow-x: auto;
+}
+
+.svg-view {
+  flex-grow: 1;
+  background: white;
+  padding: 15px;
+  height: 100px;
+  @extend %no-selection;
+}
+
+.panel.playback-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.panel.octave-controls {
+  display: flex;
+  align-items: center;
+
+  .input-wrapper {
+    display: flex;
+    width: 100%;
+    margin-left: 15px;
+    & > input { width: 100%; }
+  }
+}
+
+.dropdown-control {
+  position: relative;
+  float: right;
+}
+
+.dropdown-button[data-open="1"] {
+  box-shadow: 0px 0px 1px 3px rgba(100,100,100,0.5);
+}
+
+.dropdown-button[data-open="0"] + .dropdown-menu {
+  display: none;
+}
+
+.dropdown-button[data-open="1"] + .dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  min-width: 400px;
+  margin: 0;
+  padding: 10px;
+  background: #364156;
+  border: 1px solid $bg-color;
+  box-shadow: 0 0 0 2px rgba(100,100,100,0.15);
+  font-size: 18px;
+}
+
+.dropdown-menu li {
+  list-style: none;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $bg-color;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.tempo-controls {
+  display: flex;
+
+  .tempo-label {
+    min-width: 75px;
+    margin-right: 10px;
+    &:before { content: attr(data-tempo); }
+  }
+}

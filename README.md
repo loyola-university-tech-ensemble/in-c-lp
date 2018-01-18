@@ -9,11 +9,10 @@ design supporting mobile, tablets, and laptops.
 ## Development
 
 If you are contributing to this project there is a build script that will watch
-the source directory for any changes and dynamically rebuild the JS bundle. Requires
-[npm][npm]:
+the source directory for any changes and dynamically rebuild the JS and CSS bundles. Requires [npm][npm]:
 
 ```
-$ npm run-script watch
+$ npm run watch
 ```
 
 [npm]: https://www.npmjs.com/
