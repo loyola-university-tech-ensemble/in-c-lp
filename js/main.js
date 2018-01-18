@@ -3,7 +3,8 @@
 
   const feather = require('feather-icons');
   const Tone = require('tone');
-  const phrases = require('../assets/phrases.json');
+  Tone.context.latencyHint = 'fastest'; // interactive
+  const phrases = require('../phrases/phrases.json');
   const TOTAL_PATTERNS = phrases.length;
 
   feather.replace();
