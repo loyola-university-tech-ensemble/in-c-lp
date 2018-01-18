@@ -4,17 +4,21 @@
   "description": "LUTE's Web Audio-based performance tool for Terry Riley's \"In C\"",
   "main": "index.js",
   "scripts": {
-    "build-js": "browserify -v js/main.js -o bundle.js",
-    "build-sass": "node-sass styles/main.scss style.css",
-    "build": "npm run build-js && npm run build-sass",
-    "watch-js": "watchify -v --debug js/main.js -o bundle.js",
-    "watch-sass": "node-sass -w --source-map-embed styles/main.scss style.css",
+    "make-dist": "mkdir -p dist && cp index.html dist/",
+    "build-js": "browserify -e js/main.js -o dist/bundle.js",
+    "build-sass": "node-sass styles/main.scss dist/styles.css",
+    "build-ly": "sh build-ly.sh",
+    "build": "npm run make-dist && npm run build-js && npm run build-sass && npm run build-ly",
+    "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
+    "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
     "watch": "npm run watch-js & npm run watch-sass",
+    "serve": "npm run watch & python -m SimpleHTTPServer",
+    "deploy": "npm run build && gh-pages -d dist -o upstream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loyola-university-tech-ensemble/InC_WebApp.git"
+    "url": "git+https://github.com/loyola-university-tech-ensemble/in-c.git"
   },
   "keywords": [
     "Terry Riley",
@@ -27,15 +31,16 @@
   "author": "Loyola University Technology Ensemble",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/loyola-university-tech-ensemble/InC_WebApp/issues"
+    "url": "https://github.com/loyola-university-tech-ensemble/in-c/issues"
   },
-  "homepage": "https://github.com/loyola-university-tech-ensemble/InC_WebApp#readme",
+  "homepage": "https://github.com/loyola-university-tech-ensemble/in-c#readme",
   "dependencies": {
     "feather-icons": "^4.5.0",
     "tone": "^0.11.11"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
+    "gh-pages": "^1.1.0",
     "node-sass": "^4.7.2",
     "watchify": "^3.9.0"
   }
