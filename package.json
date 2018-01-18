@@ -11,8 +11,9 @@
     "build": "npm run make-dist && npm run build-js && npm run build-sass && npm run build-ly",
     "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
     "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
-    "watch": "npm run watch-js & npm run watch-sass",
-    "serve": "npm run watch & python -m SimpleHTTPServer",
+    "watch-html": "cpx 'index.html' dist --verbose --clean --watch",
+    "watch": "npm run watch-js & npm run watch-sass & npm run watch-html",
+    "serve": "npm run watch & http-server dist",
     "deploy": "npm run build && gh-pages -d dist -o upstream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -8,24 +8,31 @@ design supporting mobile, tablets, and laptops.
 
 ## Development
 
-If you are contributing to this project there is a build script that will watch
-the source directory for any changes and dynamically rebuild the JS and CSS bundles. Requires [npm][npm]:
+### Prerequisites
 
-```
-$ npm run watch
-```
+* [npm][npm]
+* [Lilypond][ly]
 
 [npm]: https://www.npmjs.com/
-
-### Phrase SVG Generation
-
-Building new SVG images for each phrase requires [Lilypond][ly]. The Lilypond
-source files can be found in `assets/ly` and generating SVGs from them is
-automated by a build script in the same directory:
-
-```
-$ cd assets/ly
-$ ./build.sh
-```
-
 [ly]: https://lilypond.org/
+
+### Live Development
+
+If you are contributing to this project there is a build script that will watch
+the source directory for any changes, dynamically rebuild the JS and CSS bundles, and host a web server. Requires [npm][npm]:
+
+```
+$ npm run serve
+```
+
+### Deploying new releases
+
+Releases are hosted on GitHub and generated from the upstream `gh-pages` branch
+of this repository. Deploying a new release is handled by an npm build script.
+Only LUTE members are able to deploy new releases, but if you happen to be
+creating your own fork this should work for you assuming that your remote is
+called `upstream`.
+
+```
+$ npm run deploy
+```
