@@ -2,14 +2,14 @@
 // Global Variables
 //=================
 
-$bg-color: #232630;
-$fg-color: #f8efff;
+$bg-color: #232630 !global;
+$fg-color: #f8efff !global;
 
-$blue: cornflowerblue;
-$green: #599059;
-$red: #944141;
-$grey: #5c6d7b;
-$dark-grey: #424e57;
+$blue: cornflowerblue !global;
+$green: #599059 !global;
+$red: #944141 !global;
+$grey: #5c6d7b !global;
+$dark-grey: #424e57 !global;
 
 %no-selection {
   -webkit-user-select: none;
@@ -18,12 +18,15 @@ $dark-grey: #424e57;
   user-select: none;
 }
 
-@import './buttons.scss';
-@import './sliders.scss';
+@import 'buttons';
+@import 'sliders';
 
 //=============
 // Base Styling
 //=============
+
+:focus { outline: none !important; }
+::-moz-focus-inner { border: none !important; }
 
 body {
   width: 50%;
