@@ -1,0 +1,178 @@
+//---------------------------------------------------
+// Cross-platform range styling overrides
+//
+// Selectors are kept on separate lines because the
+// browsers ignore them otherwise.
+//---------------------------------------------------
+
+input[type=range] {
+  -webkit-appearance: none;
+  background-color: transparent;
+  width: 100%;
+  margin: 6.5px 0;
+}
+
+input[type=range]:focus,
+input[type=range]:active {
+  outline: none;
+}
+
+//------------------
+// Octave value "-2"
+//------------------
+
+@mixin track-minus-2 {
+  background: linear-gradient(to right,
+    $blue,
+    $blue 25%,
+    $dark-grey 25%,
+    $dark-grey 25.5%,
+    $blue 25%,
+    $blue 50%,
+    $bg-color 50%
+  );
+}
+
+.input-wrapper.octave[data-octave="-2"] > input[type=range]::-webkit-slider-runnable-track {
+  @include track-minus-2;
+}
+
+.input-wrapper.octave[data-octave="-2"] > input[type=range]::-moz-range-track {
+  @include track-minus-2;
+}
+
+//------------------
+// Octave value "-1"
+//------------------
+
+@mixin track-minus-1 {
+  background: linear-gradient(to right,
+    $bg-color,
+    $bg-color 24%,
+    $blue 25%,
+    $blue 50%,
+    $bg-color 50%
+  );
+}
+
+.input-wrapper.octave[data-octave="-1"] > input[type=range]::-webkit-slider-runnable-track {
+  @include track-minus-1;
+}
+
+.input-wrapper.octave[data-octave="-1"] > input[type=range]::-moz-range-track {
+  @include track-minus-1;
+}
+
+//-----------------
+// Octave value "0"
+//-----------------
+
+.input-wrapper.octave[data-octave="0"] > input[type=range]::-webkit-slider-runnable-track {
+  background-color: $bg-color;
+}
+
+.input-wrapper.octave[data-octave="0"] > input[type=range]::-moz-range-track {
+  background-color: $bg-color;
+}
+
+//-----------------
+// Octave value "1"
+//-----------------
+
+@mixin track-plus-1 {
+  background: linear-gradient(to right,
+    $bg-color 50%,
+    $blue 50%,
+    $blue 75%,
+    $bg-color 76%
+  );
+}
+
+.input-wrapper.octave[data-octave="1"] > input[type=range]::-webkit-slider-runnable-track {
+  @include track-plus-1;
+}
+
+.input-wrapper.octave[data-octave="1"] > input[type=range]::-moz-range-track {
+  @include track-plus-1;
+}
+
+//-----------------
+// Octave value "2"
+//-----------------
+
+@mixin track-plus-2 {
+  background: linear-gradient(to right,
+    $bg-color 50%,
+    $blue 50%,
+    $blue 75%,
+    $dark-grey 75%,
+    $dark-grey 75.5%,
+    $blue 75%
+  );
+}
+
+.input-wrapper.octave[data-octave="2"] > input[type=range]::-webkit-slider-runnable-track {
+  @include track-plus-2;
+}
+
+.input-wrapper.octave[data-octave="2"] > input[type=range]::-moz-range-track {
+  @include track-plus-2;
+}
+
+//-------------
+// Slider thumb
+//-------------
+
+@mixin range-thumb {
+  margin-top: -6px;
+  height: 25px;
+  width: 35px;
+  -webkit-appearance: none;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid $dark-grey;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
+  background: #5c6d7b;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  @include range-thumb;
+}
+
+input[type=range]::-moz-range-thumb {
+  @include range-thumb;
+}
+
+input[type=range]::-ms-thumb {
+  @include range-thumb;
+}
+
+//------
+// Track
+//------
+
+@mixin range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: $bg-color;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  // box-shadow w/ webkit's weird gradients
+  @include range-track;
+  box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.25);
+}
+
+input[type=range]::-moz-range-track {
+  @include range-track;
+}
+
+input[type=range]::-ms-track {
+  @include range-track;
+}
