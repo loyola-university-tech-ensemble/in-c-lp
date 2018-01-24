@@ -25,12 +25,25 @@ button.play[data-scheduled="true"] {
   @include button-border($grey);
 }
 
-button.ostinato[data-active="started"] {
-  background: $green;
-  @include button-border($green);
+button.ostinato {
+  &[data-active="true"] {
+    background: $green;
+    @include button-border($green);
+  }
+
+  &[data-active="false"] {
+    background: #944141;
+    @include button-border($red);
+  }
 }
 
-button.ostinato[data-active="stopped"] {
-  background: #944141;
-  @include button-border($red);
+button.clock {
+  &[data-state="stopped"] {
+    background: #944141;
+    @include button-border($red);
+  }
+  &[data-state="started"] {
+    background: $green;
+    @include button-border($green);
+  }
 }
