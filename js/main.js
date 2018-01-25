@@ -16,11 +16,14 @@
     }
   }
 
+  const ostinatoButton = document.querySelector('.ostinato');
+  const syncButton = document.querySelector('.sync');
+  const clockButton = document.querySelector('.clock');
+
   const svgView = document.querySelector('.svg-view');
 
   const forwardButton = document.querySelector('.forward');
   const backwardButton = document.querySelector('.backward');
-  const ostinatoButton = document.querySelector('.ostinato');
   const playButton = document.querySelector('.play');
 
   const octaveContainer = document.querySelector('.input-wrapper.octave');
@@ -93,11 +96,6 @@
     }
   }).toMaster();
 
-  Tone.Transport.scheduleRepeat((time) => {
-    ostinato.triggerAttackRelease("C3", "8n", time, 0.3);
-    ostinato.triggerAttackRelease("C3", "8n", `${time} + 8n`, 0.1);
-  }, "4n");
-
   const parts = phrases.map(p =>
     new Tone.Part((time, note) => {
       const [_, pClass, octave] = note.pitch.match(/(\w\#?)(\d)/);
@@ -110,12 +108,36 @@
     }, p.notes)
   );
 
-  ostinatoButton.onclick = () => {
+  clockButton.onclick = () => {
     playButton.dataset.scheduled = false;
     Tone.Transport.cancel(); // wipe transport
     Tone.Transport.toggle();
-    ostinatoButton.dataset.active = Tone.Transport.state;
+    clockButton.dataset.state = Tone.Transport.state;
+  }
+
+  ostinatoButton.onclick = () => {
+    const active = ostinatoButton.dataset.active === 'true';
+    if (active) {
+      Tone.Transport.clear(Number(ostinatoButton.dataset.id));
+    } else {
+      const id = Tone.Transport.scheduleRepeat((time) => {
+        ostinato.triggerAttackRelease("C3", "8n", time, 0.3);
+        ostinato.triggerAttackRelease("C3", "8n", `${time} + 8n`, 0.1);
+      }, "4n", "@4n");
+      ostinatoButton.dataset.id = id;
+    }
+    ostinatoButton.dataset.active = !active;
   };
+
+  syncButton.onmousedown = () => {
+    const bpm = tempoLabel.dataset.tempo;
+    Tone.Transport.bpm.rampTo(bpm * 1.05, 0.1);
+  }
+
+  syncButton.onmouseup = () => {
+    const bpm = tempoLabel.dataset.tempo;
+    Tone.Transport.bpm.rampTo(bpm, 0.1);
+  }
 
   playButton.onclick = () => {
     if (playButton.dataset.scheduled !== 'true') {
