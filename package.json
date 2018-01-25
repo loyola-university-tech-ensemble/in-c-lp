@@ -12,7 +12,8 @@
     "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
     "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
     "watch-html": "cpx 'index.html' dist --verbose --clean --watch",
-    "watch": "npm run watch-js & npm run watch-sass & npm run watch-html",
+    "watch-ly": "node lyWatcher",
+    "watch": "npm run watch-js & npm run watch-sass & npm run watch-html & npm run watch-ly",
     "serve": "npm run watch & http-server dist",
     "deploy": "npm run build && gh-pages -d dist -o upstream",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -41,6 +42,8 @@
   },
   "devDependencies": {
     "browserify": "^14.5.0",
+    "cpx": "^1.5.0",
+    "debounce": "^1.1.0",
     "gh-pages": "^1.1.0",
     "node-sass": "^4.7.2",
     "watchify": "^3.9.0"
