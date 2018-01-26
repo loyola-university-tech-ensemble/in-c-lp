@@ -35,14 +35,14 @@
   const moveForwards = () => {
     const pattern = (parseInt(svgView.dataset.pattern, 10) + 1) % TOTAL_PATTERNS;
     svgView.dataset.pattern = pattern;
-    svgView.src = `assets/svgs/${pattern+1}.svg`;
+    svgView.data = `assets/svgs/${pattern+1}.svg`;
   };
 
   const moveBackwards = () => {
     const n = parseInt(svgView.dataset.pattern, 10);
     const pattern = (n-1 >= 0) ? n-1 : TOTAL_PATTERNS-1;
     svgView.dataset.pattern = pattern;
-    svgView.src = `assets/svgs/${pattern+1}.svg`;
+    svgView.data = `assets/svgs/${pattern+1}.svg`;
   };
 
   forwardButton.onclick = moveForwards;
