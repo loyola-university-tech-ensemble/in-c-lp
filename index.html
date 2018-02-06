@@ -9,50 +9,137 @@
 <body>
 
   <header class="panel">
-    <span>LUTE: inC</span>
-    <span class="dropdown-control">
-      <span class="dropdown-button icon-container" data-open="0">
-        <span data-feather="menu"></span>
+    <div class="header-content" data-settings-open="false">
+      <span class="title">LUTE: inC</span>
+      <span class="flex-spacer"></span>
+      <span class="settings-control">
+        <span class="icon-container"><span data-feather="menu"></span></span>
       </span>
-      <ul class="dropdown-menu">
-        <li class="tempo-controls">
-          <span class="tempo-label" data-tempo="120">bpm</span>
-          <input class="tempo-slider" type="range" value="120" min="60" max="150">
-        </li>
-        <li>
-          <button class="sync">Sync</button>
-          <button class="ostinato" data-active="false">Ostinato</button>
-          <button class="clock" data-state="stopped">Start / Stop</button>
-        </li>
-      </ul>
-    </span>
+    </div>
+    <div class="settings-container">
+      <div class="tempo">
+        <label>Tempo (BPM):</label>
+        <input type="number" value="120" min="60" max="150">
+      </div>
+      <button class="clock" data-state="stopped">Stop</button>
+      <button class="sync">Sync</button>
+      <button class="ostinato" data-active="false">Ostinato</button>
+    </div>
   </header>
 
-  <div class="panel svg-panel">
-    <div class="svg-container">
-      <object class="svg-view" type="image/svg+xml" data="assets/svgs/1.svg" data-pattern=0></object>
+  <div class="intro" data-showIntro="true">
+    <blockquote>
+      <p>All performers play from the same page of 53 melodic patterns played in
+      sequence. …</p>
+
+      <p>Patterns are to be played consecutively with each performer having the
+      freedom to determine how many times he or she will repeat each pattern
+      before moving on to the next. There is no fixed rule as to the number of
+      repetitions a pattern may have, however, since performances normally
+      average between 45 minutes and an hour and a half, it can be assumed that
+      one would repeat each pattern from somewhere between 45 seconds and a
+      minute and a half or longer.</p>
+
+      <p>It is very important that performers listen very carefully to one another
+      and this means occasionally to drop out and listen. As an ensemble, it
+      is very desirable to play very softly as well as very loudly and to try
+      [to do so] together. …</p>
+
+      <p>It is important not to hurry from pattern to pattern but to stay on a
+      pattern long enough to interlock with other patterns being played.  As
+      the performance progresses, performers should stay within 2 or 3 patterns
+      of each other.  It is important not to race too far ahead or to lag too
+      far behind. …</p>
+
+      <p><i>inC</i> is ended in this way: when each performer arrives at figure
+      #53, he or she stays on it until the entire ensemble has arrived there.
+      The group then makes a large crescendo and diminuendo a few times and
+      each player drops out as he or she wishes.</p>
+
+      <div class="signature-container">
+        <object class="terry-signature"
+          type="image/svg+xml"
+          data="terry_signature.svg">
+        </object>
+      </div>
+    </blockquote>
+
+    <div class="intro-controls">
+      <div class="flex-spacer"></div>
+      <div class="flex-spacer"></div>
+      <div class="tempo">
+        <label for="tempo-input">Tempo</label>
+        <input type="number" min="40" max="160" step="0.1" value="120">
+      </div>
+      <button class="magic-button" data-state="off">Start</button>
+      <div class="flex-spacer"></div>
+      <button class="leave-intro">
+        <span data-feather="arrow-right"></span>
+      </button>
     </div>
   </div>
 
-  <div class="panel octave-controls">
-    <div class="input-wrapper octave" data-octave="0">
-      <input class="octave-slider" type="range" value="0" min="-2" max="2" step="1">
-    </div>
-  </div>
+  <div class="main">
 
-  <div class="panel playback-controls">
-    <button class="backward">
-      <span data-feather="arrow-left"></span>
-    </button>
-    <button class="play" data-scheduled="true">
-      <span data-feather="play"></span>
-    </button>
-    <button class="forward">
-      <span data-feather="arrow-right"></span>
-    </button>
-    <button class="8th-shift" data-shifted="false">
-      <span data-feather="chevrons-right"></span>
-    </button>
+    <div class="panel svg-panel">
+      <button class="backward">
+        <span data-feather="arrow-left"></span>
+      </button>
+      <div class="svg-container play" data-scheduled="true">
+        <object class="svg-view"
+          type="image/svg+xml"
+          data="assets/svgs/1.svg"
+          data-pattern=0>
+        </object>
+      </div>
+      <button class="forward">
+        <span data-feather="arrow-right"></span>
+      </button>
+    </div>
+
+    <div class="panel xy-pad-container">
+      <div class="panel-split-2">
+        <div class="xy-pad" data-x=0 data-y=0>
+          <span class="thumb"></span>
+        </div>
+      </div>
+      <div class="panel-split-2">
+        <div class="instrument-selector-container">
+          <label>Instrument</label>
+          <select class="instrument-selector">
+            <option value="pwm">8-bit</option>
+            <option value="fatsquare4">Organ</option>
+            <option value="square8">Testing</option>
+          </select>
+        </div>
+        <div class="octave-controls">
+          <label>Octave</label>
+          <div class="input-wrapper octave" data-octave="0">
+            <input class="octave-slider"
+              type="range"
+              value="0"
+              min="-2"
+              max="2"
+              step="1">
+          </div>
+        </div>
+        <div class="eighth-shift-container">
+          <label>8th Note Shift</label>
+          <button class="eighth-shift" data-shifted="false">
+            <span data-feather="chevrons-right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <div class="panel playback-controls">
+      <button >
+        <span data-feather="play"></span>
+      </button>
+    </div>
+    -->
+
   </div>
 
 </body>
