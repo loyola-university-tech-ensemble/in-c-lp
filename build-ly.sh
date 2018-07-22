@@ -24,7 +24,7 @@ function prep_file {
 # Generate SVGs in output directory
 # If no arguments to script, build all
 if [[ $# -eq 0 ]] ; then
-  for f in $IN_DIR/*.ly; do
+  for f in $IN_DIR/*/*.ly; do
     [ -f "$f" ] || break
     make_svg $f
   done
@@ -39,3 +39,5 @@ else
   cd $OUT_DIR
   prep_file "$(echo $1 | grep -E -o '(\d+)').preview.svg"
 fi
+
+npm run opt-svgs

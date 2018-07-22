@@ -11,7 +11,7 @@ design supporting mobile, tablets, and laptops.
 ### Prerequisites
 
 * [npm][npm]
-* [Lilypond][ly]
+* [Lilypond][ly] (minimum required version: `2.19.80`)
 
 [npm]: https://www.npmjs.com/
 [ly]: https://lilypond.org/
