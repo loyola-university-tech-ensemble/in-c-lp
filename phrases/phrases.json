@@ -293,7 +293,7 @@
       {
         "pitch": "G4",
         "midi": 67,
-        "time": "16n * 3",
+        "time": "8n + 16n",
         "velocity": 0.9921259842519685,
         "duration": "16n"
       },
@@ -307,7 +307,7 @@
       {
         "pitch": "G4",
         "midi": 67,
-        "time": "16n * 5",
+        "time": "4n + 16n",
         "velocity": 0.9921259842519685,
         "duration": "16n"
       }
