@@ -203,7 +203,7 @@
       {
         "pitch": "C4",
         "midi": 60,
-        "time": "1n",
+        "time": "1m",
         "velocity": 0.9921259842519685,
         "duration": "8n"
       }
@@ -1134,21 +1134,21 @@
         "midi": 64,
         "time": 0,
         "velocity": 0.8818897637795275,
-        "duration": 1.5
+        "duration": "2n + 4n"
       },
       {
         "pitch": "G4",
         "midi": 67,
         "time": "2n + 4n",
         "velocity": 0.8188976377952756,
-        "duration": 1.5
+        "duration": "2n + 4n"
       },
       {
         "pitch": "C5",
         "midi": 72,
         "time": "1m + 2n",
         "velocity": 0.8818897637795275,
-        "duration": 1.5
+        "duration": "2n + 4n"
       }
     ]
   },
@@ -1647,28 +1647,28 @@
         "midi": 72,
         "time": 0,
         "velocity": 0.9133858267716536,
-        "duration": "1n"
+        "duration": "1m"
       },
       {
         "pitch": "B4",
         "midi": 71,
         "time": "1m",
         "velocity": 0.889763779527559,
-        "duration": "1n"
+        "duration": "1m"
       },
       {
         "pitch": "A4",
         "midi": 69,
         "time": "2m",
         "velocity": 0.889763779527559,
-        "duration": "1n"
+        "duration": "1m"
       },
       {
         "pitch": "C5",
         "midi": 72,
         "time": "3m",
         "velocity": 0.889763779527559,
-        "duration": "1n"
+        "duration": "1m"
       }
     ]
   },

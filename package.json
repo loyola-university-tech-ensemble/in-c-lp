@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "make-dist": "mkdir -p dist && cp index.html dist/ && cp terry_signature.svg dist/",
-    "build-js": "browserify -e js/main.js -o dist/bundle.js",
+    "build-js": "browserify -e js/main.js -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
     "build-sass": "node-sass --output-style='compressed' styles/main.scss dist/styles.css",
     "opt-svgs": "svgo --disable=inlineStyles -f dist/assets/svgs",
     "build-ly": "sh build-ly.sh",
     "build": "npm run make-dist && npm run build-js && npm run build-sass && npm run build-ly",
-    "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
+    "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
     "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
     "watch-html": "cpx '*.{html,svg}' dist --verbose --clean --watch",
     "watch-ly": "node lyWatcher",
@@ -39,9 +39,13 @@
   "homepage": "https://github.com/loyola-university-tech-ensemble/in-c#readme",
   "dependencies": {
     "feather-icons": "^4.5.0",
-    "tone": "^0.11.11"
+    "tone": "^0.11.11",
+    "webworkify": "^1.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babelify": "^9.0.0",
     "browserify": "^14.5.0",
     "cpx": "^1.5.0",
     "debounce": "^1.1.0",
