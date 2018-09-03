@@ -1,16 +1,16 @@
 {
   "name": "inc_webapp",
   "version": "0.0.1",
-  "description": "LUTE's Web Audio-based performance tool for Terry Riley's \"In C\"",
-  "main": "index.js",
+  "description": "LUTE's web-based performance tool for Terry Riley's \"In C\"",
+  "main": "js/main.jsx",
   "scripts": {
     "make-dist": "mkdir -p dist && cp index.html dist/ && cp terry_signature.svg dist/",
-    "build-js": "browserify -e js/main.js -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
+    "build-js": "browserify -e js/main.jsx -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
     "build-sass": "node-sass --output-style='compressed' styles/main.scss dist/styles.css",
     "opt-svgs": "svgo --disable=inlineStyles -f dist/assets/svgs",
     "build-ly": "sh build-ly.sh",
     "build": "npm run make-dist && npm run build-js && npm run build-sass && npm run build-ly",
-    "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
+    "watch-js": "watchify -v --debug js/main.jsx -o dist/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
     "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
     "watch-html": "cpx '*.{html,svg}' dist --verbose --clean --watch",
     "watch-ly": "node lyWatcher",
@@ -38,7 +38,9 @@
   },
   "homepage": "https://github.com/loyola-university-tech-ensemble/in-c#readme",
   "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "feather-icons": "^4.5.0",
+    "preact": "^8.3.1",
     "tone": "^0.11.11",
     "webworkify": "^1.5.0"
   },

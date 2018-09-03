@@ -1,3 +1,5 @@
+import util from './util.js';
+
 class EnvelopeAD {
   constructor(ctx, param, attack = 0.1, release = 0.1, curve = 1, startValue = 1, endValue = 0) {
     this.ctx = ctx;
@@ -74,8 +76,32 @@ class Synth {
   }
 }
 
+class Ostinato {
+  constructor(ctx) {
+    this.ctx = ctx;
+
+    this.osc = ctx.createOscillator();
+    this.osc.type = 'sine';
+    //const midi = (Math.floor(Math.random() * 3) * 12) + 60;
+    this.osc.frequency.value = util.midiToFrequency(72);
+
+    this.gain = ctx.createGain();
+    this.gain.gain.setValueAtTime(0.0, this.ctx.currentTime);
+    this.vca = new VCA(this.ctx, this.gain.gain, 0, 0.1, 0, 0.1);
+
+    this.osc.connect(this.gain);
+    this.gain.connect(ctx.destination);
+    this.osc.start();
+  }
+
+  playNoteAt(time) {
+    this.vca.triggerAt(time, 0.1, 0.85);
+  }
+}
+
 module.exports = {
   EnvelopeAD,
   VCA,
   Synth,
+  Ostinato,
 }
