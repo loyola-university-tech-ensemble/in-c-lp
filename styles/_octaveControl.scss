@@ -1,0 +1,18 @@
+#octave-control {
+  display: flex;
+
+  & > button {
+    margin: 0;
+    background: none;
+    border: 2px solid $fg-color;
+    font-size: 24px;
+    &.decrement { border-right: 0; }
+  }
+
+  &.value_-3 .decrement { background: rgba($yellow, 1); cursor: not-allowed; }
+  &.value_-2 .decrement { background: rgba($yellow, 0.66); }
+  &.value_-1 .decrement { background: rgba($yellow, 0.33); }
+  &.value_1 .increment { background: rgba($yellow, 0.33); }
+  &.value_2 .increment { background: rgba($yellow, 0.66); }
+  &.value_3 .increment { background: rgba($yellow, 1); cursor: not-allowed; }
+}

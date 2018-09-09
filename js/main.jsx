@@ -1,74 +1,55 @@
-const state = {
-  scheduleLookAhead: 0.02, // seconds
-  bpm: 120,
-  secondsPerQuarterNote: 0.5, // 60s / bpm
-  secondsPerEighthNote: 0.25, // 30s / bpm
-  ostinatoOn: true,
-};
+import { h, app } from 'hyperapp';
+import { state, actions } from './model.js';
+import OctaveControl from './ui/OctaveControl.jsx';
 
-// Preact -------------------------------------------
-import preact from 'preact';
-
-preact.render((
-  <div id="foo">
-    <span>Hello, world!</span>
-    <button onClick={ e => alert("hi!") }>Click Me</button>
+const view = (state, actions) => (
+  <div id="app">
+    <h1>LUTE: inC</h1>
+    <OctaveControl />
   </div>
-), document.body);
-
-// Synthesis ----------------------------------------
-import util from './util.js';
-
-import phrasesJSON from '../phrases/phrases.json';
-const phrases = phrasesJSON.map(({ duration, notes }) =>
-  ({
-    duration: util.parseTimeString(duration, state.bpm),
-    notes: notes.map(note => Object.assign(note, {
-      frequency: util.midiToFrequency(note['midi']),
-      time: util.parseTimeString(note['time'], state.bpm),
-      duration: util.parseTimeString(note['duration'], state.bpm),
-    })),
-  })
 );
 
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let nextOstinatoTime = audioCtx.currentTime;
-let nextPulseTime = audioCtx.currentTime;
+app(state, actions, view, document.body);
+
+// Synthesis ----------------------------------------
+state.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let nextOstinatoTime = state.audioCtx.currentTime;
+let nextPulseTime = state.audioCtx.currentTime;
 
 import work from 'webworkify';
 import clockWorker from './clock_worker.js';
 const timer = work(clockWorker, state.bpm);
 import { Synth, Ostinato } from './synth.js';
 
-const mySynth = new Synth(audioCtx);
-const myOstinato = new Ostinato(audioCtx);
+const myOstinato = new Ostinato(state.audioCtx);
 
 timer.addEventListener('message', function (ev) {
-  while (nextOstinatoTime < audioCtx.currentTime + 0.5) {
+  while (nextOstinatoTime < state.audioCtx.currentTime + 0.5) {
     if (state.ostinatoOn) myOstinato.playNoteAt(nextOstinatoTime);
     nextOstinatoTime += state.secondsPerQuarterNote;
   }
 });
 
-let endPhraseTime = audioCtx.currentTime;
+const mySynth = new Synth(state.audioCtx);
+let endPhraseTime = state.audioCtx.currentTime;
 let playButtonPressed = false;
 
 const playPhrase = (phraseNumber, startTime) => {
-  phrases[phraseNumber].notes.forEach(note =>
+  state.phrases[phraseNumber].notes.forEach(note =>
     mySynth.playNoteAt(startTime + note.time, note)
   );
-  return startTime + phrases[phraseNumber].duration;
+  return startTime + state.phrases[phraseNumber].duration;
 };
 
 timer.addEventListener('message', function (ev) {
-  while (nextPulseTime < audioCtx.currentTime + state.scheduleLookAhead) {
-    if (playButtonPressed && audioCtx.currentTime >= endPhraseTime) {
-      console.log(`playing phrase at: ${nextPulseTime}`);
+  while (nextPulseTime < state.audioCtx.currentTime + state.scheduleLookAhead) {
+    if (playButtonPressed && state.audioCtx.currentTime >= endPhraseTime) {
+      //console.log(`playing phrase at: ${nextPulseTime}`);
       endPhraseTime = playPhrase(24, nextPulseTime);
-      console.log(`end of phrase: ${endPhraseTime}`);
+      //console.log(`end of phrase: ${endPhraseTime}`);
     }
     nextPulseTime += state.secondsPerEighthNote;
-    console.log(`nextPulse: ${nextPulseTime}`);
+    //console.log(`nextPulse: ${nextPulseTime}`);
   }
 });
 

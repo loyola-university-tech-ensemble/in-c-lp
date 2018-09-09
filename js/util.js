@@ -20,7 +20,7 @@ const _tokens = {
   },
 }
 
-module.exports = {
+export default {
   /**
    * Convert time strings (as found in phrases.json) into an absolute time in
    * seconds using the argument beats per minute. Similar syntax to the string
@@ -48,7 +48,7 @@ module.exports = {
   /**
    * Convert MIDI pitch numbers to frequencies in 12-TET with 440Hz reference.
    */
-  midiToFrequency(midiNumber) {
-    return 27.5 * Math.pow(2, (midiNumber - 21) / 12);
+  midiToFrequency(midiNumber, offset = 0) {
+    return 27.5 * Math.pow(2, ((midiNumber + offset) - 21) / 12);
   },
 };
