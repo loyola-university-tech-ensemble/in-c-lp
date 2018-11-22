@@ -6,7 +6,7 @@ export default () => (state, actions) => (
     id='octave-control'
     class={`value_${state.octave}`}
     role='spinbutton'
-    aria-label='Octave'
+    aria-label='Octave Spinner'
     aria-valuenow={state.octave}
     aria-valuemin='-3'
     aria-valuemax='3'
@@ -15,7 +15,7 @@ export default () => (state, actions) => (
       class='decrement'
       aria-label='Octave Decrement'
       onclick={() => actions.octaveDown()}>
-      -
+      –
     </button>
     <button
       class='increment'

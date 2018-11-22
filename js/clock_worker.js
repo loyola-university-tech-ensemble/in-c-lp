@@ -8,9 +8,8 @@
  * determine the overall tempo, so 150ms is a safe value when factoring in user
  * reaction time, minimum phrase duration, and worst-case device profiles.
  */
-module.exports = function (self) {
+module.exports = function (self, state) {
   self.addEventListener('message', function (ev) {
-    const interval = parseInt(ev.data);
-    setInterval(() => self.postMessage('tick'), interval);
+    setInterval(() => self.postMessage('tick'), 150);
   });
 };
