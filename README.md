@@ -22,7 +22,7 @@ If you are contributing to this project there is a build script that will watch
 the source directory for any changes, dynamically rebuild the JS and CSS bundles, and host a web server. Requires [npm][npm]:
 
 ```
-$ npm run serve
+$ npm start
 ```
 
 ### Deploying new releases

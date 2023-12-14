@@ -2,16 +2,16 @@
 // Global Variables
 //=================
 
-$bg-color: #d6ded9 !global;
-$fg-color: #757575 !global;
+$bg-color: #d6ded9;
+$fg-color: #757575;
 
-$primary: #cf9191 !global;
-$green: #82b182 !global;
-$red: #944141 !global;
-$grey: #5c6d7b !global;
-$dark-grey: #424e57 !global;
+$primary: #cf9191;
+$green: #82b182;
+$red: #944141;
+$grey: #5c6d7b;
+$dark-grey: #424e57;
 
-$font-family: 'Avenir Next', Helvetica, Arial, sans-serif !global;
+$font-family: 'Avenir Next', Helvetica, Arial, sans-serif;
 
 $anim-speed: 0.4s;
 
@@ -170,15 +170,15 @@ header {
     $quote-size: 36px;
     &::before {
       position: absolute;
-      top: -$quote-size/2;
-      left: -$quote-size/2;
+      top: calc(-1 * $quote-size / 2);
+      left: calc(-1 * $quote-size / 2);
       font-size: $quote-size;
       content: "“";
     }
     &::after {
       position: absolute;
-      bottom: -$quote-size;
-      right: -$quote-size/2;
+      bottom: calc(-1 * $quote-size);
+      right: calc(-1 * $quote-size / 2);
       font-size: $quote-size;
       content: "”";
     }
@@ -311,7 +311,7 @@ svg:not(.feather) {
       border-radius: 100%;
       background: transparent;
       cursor: pointer;
-      transition: background $anim-speed/2 ease;
+      transition: background calc($anim-speed / 2) ease;
     }
     &[data-dragging="true"] > .thumb {
       background: $primary;

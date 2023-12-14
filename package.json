@@ -6,16 +6,16 @@
   "scripts": {
     "make-dist": "mkdir -p dist && cp index.html dist/ && cp terry_signature.svg dist/",
     "build-js": "browserify -e js/main.js -o dist/bundle.js",
-    "build-sass": "node-sass --output-style='compressed' styles/main.scss dist/styles.css",
-    "opt-svgs": "svgo --disable=inlineStyles -f dist/assets/svgs",
+    "build-sass": "sass --style='compressed' styles/main.scss dist/styles.css",
+    "opt-svgs": "svgo -f dist/assets/svgs",
     "build-ly": "sh build-ly.sh",
     "build": "npm run make-dist && npm run build-js && npm run build-sass && npm run build-ly",
     "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
-    "watch-sass": "node-sass -w --source-map-embed styles/main.scss dist/styles.css",
+    "watch-sass": "sass --watch --embed-source-map styles/main.scss dist/styles.css",
     "watch-html": "cpx '*.{html,svg}' dist --verbose --clean --watch",
     "watch-ly": "node lyWatcher",
     "watch": "npm run watch-js & npm run watch-sass & npm run watch-html & npm run watch-ly",
-    "serve": "npm run watch & http-server dist",
+    "start": "npm run watch & http-server dist",
     "deploy": "npm run build && gh-pages -d dist -o upstream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -42,13 +42,13 @@
     "tone": "^0.11.11"
   },
   "devDependencies": {
-    "browserify": "^14.5.0",
+    "browserify": "^17.0.0",
     "cpx": "^1.5.0",
     "debounce": "^1.1.0",
-    "gh-pages": "^1.2.0",
-    "http-server": "^0.11.1",
-    "node-sass": "^4.9.2",
-    "svgo": "^1.0.5",
-    "watchify": "^3.11.0"
+    "gh-pages": "^6.1.0",
+    "http-server": "^14.1.1",
+    "sass": "^1.69.5",
+    "svgo": "^3.1.0",
+    "watchify": "^4.0.0"
   }
 }
